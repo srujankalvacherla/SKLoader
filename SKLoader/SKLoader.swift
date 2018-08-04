@@ -41,17 +41,9 @@ public class SKLoader: UIView {
         self.addSubview(backgroundView)
         self.backgroundView.addSubview(gifImage)
         self.backgroundView.bringSubview(toFront: self.gifImage)
-//        UIApplication.shared.keyWindow?.bringSubview(toFront: self.backgroundView)
         UIApplication.shared.keyWindow?.addSubview(self.backgroundView)
     }
     public func hideLoader(){
         self.backgroundView.removeFromSuperview()
     }
-//    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        let touch = touches.first
-//        if touch?.view != self.gifImage{
-//            self.hideLoader()
-//        }
-//    }
 }

@@ -10,28 +10,24 @@ import UIKit
 import SKLoader
 
 class ExampleViewController: UITableViewController {
-
+    
+    // MARK: - Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+        
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
-//        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (boolean) in
-//            SKLoader.sharedInstance.hideLoader()
-//        }
         switch indexPath.row {
         case 0:
             let loader = SKLoader()
@@ -57,8 +53,7 @@ class ExampleViewController: UITableViewController {
             let loader = SKLoader()
             loader.gifName = "earth"
             loader.animationSpeed = 0.01
-//            loader.viewSize = CGSize(width: 250, height: 150)
-            loader.viewContentMode = .scaleToFill
+            loader.viewContentMode = .scaleAspectFit
             loader.showLoader()
             Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (boolean) in
                 loader.hideLoader()
@@ -68,6 +63,7 @@ class ExampleViewController: UITableViewController {
             let loader = SKLoader()
             loader.gifName = "PageLoading"
             loader.animationSpeed = 0.01
+            loader.viewBackgroundColor = UIColor.white
             loader.viewSize = CGSize(width: 200, height: 150)
             loader.showLoader()
             Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (boolean) in
@@ -102,11 +98,18 @@ class ExampleViewController: UITableViewController {
                 loader.hideLoader()
             }
             break
+        case 7:
+           SKLoader.sharedInstance.showLoader()
+            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (boolean) in
+                SKLoader.sharedInstance.hideLoader()
+            }
+            break
         default:
             break
         }
 
     }
+    // MARK: - Action Methods
     @objc func closeLoader(){
         SKLoader.sharedInstance.hideLoader()
     }
