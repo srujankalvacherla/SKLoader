@@ -9,7 +9,7 @@
 import UIKit
 public var animSpeed = 0.1
 public class SKLoader: UIView {
-    
+
     // MARK: - Public Variables
     public static let sharedInstance = SKLoader()
     public var gifName: String = ""
